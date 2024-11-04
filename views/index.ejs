@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>User Registration</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+      background: linear-gradient(
+        rgba(0, 0, 0, 0.7),
+        rgba(0, 0, 0, 0.7)
+      ), url('https://source.unsplash.com/random/1600x900/?abstract');
+      background-size: cover;
+      backdrop-filter: blur(5px);
+      color: #ffffff;
+      padding: 20px;
+    }
+
+    .container {
+      background: rgba(0, 0, 0, 0.85);
+      padding: 30px;
+      border-radius: 10px;
+      width: 100%;
+      max-width: 500px;
+      text-align: center;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+      border: 1px solid #ff0000;
+      margin-bottom: 20px;
+    }
+
+    h1, h2 {
+      color: #ff4c4c;
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      margin: 15px 0 5px;
+      color: #ff4c4c;
+      font-weight: bold;
+    }
+
+    input {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 1px solid #ff4c4c;
+      border-radius: 5px;
+      background: #333;
+      color: #fff;
+    }
+
+
+    button {
+      width: 100%;
+      padding: 10px;
+      border: none;
+      border-radius: 5px;
+      background-color: #ff4c4c;
+      color: #fff;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #ff1a1a;
+    }
+
+    ul {
+      list-style-type: none;
+      padding: 0;
+      color: #ffffff;
+      text-align: left;
+    }
+
+    li {
+      background-color: #222;
+      border: 1px solid #ff4c4c;
+      border-radius: 5px;
+      padding: 10px;
+      margin-bottom: 10px;
+    }
+
+    strong {
+      color: #ff4c4c;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Register User</h1>
+    <form action="/register" method="POST">
+      <label>Username:</label>
+      <input type="text" name="username" required>
+      <label>Email:</label>
+      <input type="email" name="email" required>
+      <label>Password:</label>
+      <input type="password" name="password" required>
+      <button type="submit">Register</button>
+    </form>
+  </div>
+
+  <div class="container">
+    <h2>Registered Users</h2>
+    <ul>
+      <% users.forEach(user => { %>
+        <li>
+          <strong>Username:</strong> <%= user.username %><br>
+          <strong>Email:</strong> <%= user.email %><br>
+          <strong>Registered At:</strong> <%= user.createdAt.toDateString() %>
+        </li>
+      <% }) %>
+    </ul>
+  </div>
+</body>
+</html>
